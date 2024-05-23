@@ -1,0 +1,14 @@
+<div class="menu">
+  <ul>
+    <li><a routerLink="/">Домашня сторінка</a></li>
+    <li><a routerLink="/tours">Тури</a></li>
+    <li><a routerLink="/gallery">Галерея</a></li>
+    <li><a routerLink="/registration">Реєстрація</a></li>
+    <li class="right-content">
+      <div *ngIf="apiService.isLoggedInUser()">
+        <span>{{ apiService.getUsername() }}</span>
+        <button (click)="logout()">Logout</button>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,42 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.description {
+  flex: 1;
+  margin-top: 0;
+  text-align: left;
+  margin-left: -10px;
+  margin-right: 100px;
+}
+
+.gallery img {
+  max-width: 450px;
+  height: auto;
+  border-radius: 5px;
+}
+
+figcaption {
+  margin-top: 5px;
+  font-style: italic;
+  color: #555;
+}
+
+h1 {
+  text-align: center;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: -370px; 
+}

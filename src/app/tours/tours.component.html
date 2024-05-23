@@ -1,0 +1,77 @@
+<table>
+    <caption>Найближчі тури</caption>
+    <thead>
+      <tr>
+        <th>Дата початку туру</th>
+        <th>Дата кінця туру</th>
+        <th>Країна</th>
+        <th>Ціна за 1 людину</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>01.01.2026</td>
+      <td>20.02.2026</td>
+      <td>Англія</td>
+      <td>400$</td>
+    </tr> 
+    <tr>
+      <td>04.10.2026</td>
+      <td>25.10.2026</td>
+      <td>Туреччина</td>
+      <td>345$</td>
+    </tr>
+    <tr>
+      <td>25.09.2026</td>
+      <td>16.10.2026</td>
+      <td>Польща</td>
+      <td>500$</td>
+    </tr> 
+    <tr>
+      <td>09.03.2026</td>
+      <td>10.04.2026</td>
+      <td>Греція</td>
+      <td>567$</td>
+    </tr> 
+    </table>
+    
+    <form>
+      <h2>Забронювати тур</h2>
+      <label for="name">Ім'я:</label>
+      <input type="text" id="name" name="name" required>
+    
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" required>
+    
+      <label for="tour">Оберіть тур:</label>
+      <select id="tour" name="tour">
+        <option value="Англія">Англія</option>
+        <option value="Туреччина">Туреччина</option>
+        <option value="Польща">Польща</option>
+        <option value="Греція">Греція</option>
+      </select>
+    
+      <input type="submit" value="Забронювати">
+    </form>
+
+    <div id="comments">
+      <div *ngIf="!serverStatusOk">{{serverStatusReason}}</div>
+      <div *ngIf="serverStatusOk && comments.length == 0">{{serverStatusReason}}</div>
+      <div *ngFor="let comment of comments" class="comment">
+        <div class="comment-container">
+          <div class="comment-info">
+            <span>{{ comment.time }}</span>
+            <span>{{ comment.user }}</span>
+          </div>
+          <div class="comment-text">{{ comment.message }}</div>
+          <button (click)="deleteComment(comment)" class="delete-btn">X</button>
+        </div>
+      </div>
+    </div>
+    <div class="textarea">
+      <textarea [(ngModel)]="userInput" name="textarea" rows="5" cols="15" (keydown.enter)="addComment()">Напишіть тут щось</textarea>
+      <div class="button-container">
+        <button [disabled]="!canPost" (click)="addComment()">Надіслати</button>
+        <div [style.color]="sendingStatusColor">{{sendingStatus}}</div>
+      </div>
+    </div>
+    
